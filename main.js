@@ -6,3 +6,9 @@ input.addEventListener('input', (e) => {
   e.target.value = val;
   progress.style.setProperty('--progress', `${val * 3.6}deg`);
 });
+
+const animateCheckbox = document.getElementById('animate-checkbox');
+
+animateCheckbox.addEventListener('change', (e) => {
+  progress.classList.toggle('card__progress--animated', e.target.checked);
+});

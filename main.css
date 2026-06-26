@@ -146,3 +146,11 @@ body {
 .toggle input[type='checkbox']:checked + label:after {
   left: 19px;
 }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.card__progress--animated {
+  animation: spin 2s linear infinite;
+}
