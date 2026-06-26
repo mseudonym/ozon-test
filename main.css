@@ -154,3 +154,9 @@ body {
 .card__progress--animated {
   animation: spin 2s linear infinite;
 }
+
+.card__progress--hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}

@@ -12,3 +12,9 @@ const animateCheckbox = document.getElementById('animate-checkbox');
 animateCheckbox.addEventListener('change', (e) => {
   progress.classList.toggle('card__progress--animated', e.target.checked);
 });
+
+const hideCheckbox = document.getElementById('hide-checkbox');
+
+hideCheckbox.addEventListener('change', (e) => {
+  progress.classList.toggle('card__progress--hidden', e.target.checked);
+});
