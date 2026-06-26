@@ -8,44 +8,88 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
 }
 
-.progress-radial {
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  max-width: 568px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+.card__title {
+  font-weight: 600;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__progress {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   border-radius: 100%;
   background: conic-gradient(var(--blue-color) var(--progress), var(--gray-color) 0deg);
 }
 
-.progress-radial::before {
+.card__progress::before {
   content: '';
   position: absolute;
-  width: 135px;
-  height: 135px;
+  width: 100px;
+  height: 100px;
   background: var(--white-color);
   border-radius: 100%;
 }
 
-.progress-value {
-  position: relative;
-  z-index: 1;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--black-color);
+.card__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card__control {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+}
+
+.control__value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 30px;
+  border: 1.5px solid var(--black-color);
+  border-radius: 100px;
+  font-weight: 500;
+}
+
+.control__label {
+  font-weight: 500;
 }
 
 .toggle {
   position: relative;
   box-sizing: border-box;
 }
-.toggle input[type="checkbox"] {
+
+.toggle input[type='checkbox'] {
   position: absolute;
   left: 0;
   top: 0;
@@ -55,39 +99,44 @@ body {
   cursor: pointer;
   opacity: 0;
 }
+
 .toggle label {
   position: relative;
   display: flex;
   align-items: center;
   box-sizing: border-box;
 }
+
 .toggle label:before {
   content: '';
-  width: 60px;
-  height: 36px;
-  background: #ccc;
+  width: 48px;
+  height: 32px;
+  background: var(--gray-color);
   position: relative;
   display: inline-block;
   border-radius: 46px;
   box-sizing: border-box;
   transition: 0.2s ease-in;
 }
+
 .toggle label:after {
   content: '';
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 100%;
   left: 2px;
   top: 2px;
   z-index: 2;
-  background: #fff;
+  background: var(--white-color);
   box-sizing: border-box;
   transition: 0.2s ease-in;
 }
-.toggle input[type="checkbox"]:checked + label:before {
+
+.toggle input[type='checkbox']:checked + label:before {
   background: var(--blue-color);
 }
-.toggle input[type="checkbox"]:checked + label:after {
-  left: 26px;
+
+.toggle input[type='checkbox']:checked + label:after {
+  left: 19px;
 }

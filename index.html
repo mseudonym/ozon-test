@@ -7,16 +7,37 @@
     <link rel="stylesheet" href="/reset.css">
   </head>
   <body>
-    <div class="progress-radial" style="--progress: 75%;">
-      <span class="progress-value">75%</span>
-    </div>
-    <div class="toggle">
-      <input type="checkbox" id='animate-checkbox'/>
-      <label></label>
-    </div>
-    <div class="toggle">
-      <input type="checkbox" id='hide-checkbox'/>
-      <label></label>
-    </div>
+    <article class='card'>
+      <div class="card__header">
+        <h3 class="card__title">Progress</h3>
+      </div>
+
+      <div class="card__content">
+        <div class="card__progress" style="--progress: 75%;"></div>
+
+        <div class="card__controls">
+          <div class="card__control">
+            <span class="control__value">60</span>
+            <span class="control__label">Value</span>
+          </div>
+
+          <div class="card__control">
+            <label class="toggle">
+              <input type="checkbox" id='animate-checkbox'/>
+              <label></label>
+            </label>
+            <span class="control__label">Animate</span>
+          </div>
+
+          <div class="card__control">
+            <label class="toggle">
+              <input type="checkbox" id='hide-checkbox'/>
+              <label></label>
+            </label>
+            <span class="control__label">Hide</span>
+          </div>
+        </div>
+      </div>
+    </article>
   </body>
 </html>
