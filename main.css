@@ -160,3 +160,11 @@ body {
   opacity: 0;
   transition: opacity 0.3s;
 }
+
+@media (orientation: portrait), (max-width: 400px) {
+  .card__content {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}
