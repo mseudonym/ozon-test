@@ -1,20 +1,66 @@
-const input = document.getElementById('value-input');
-const progress = document.querySelector('.card__progress');
+class ProgressCard {
+  constructor(rootElement) {
+    this._root = rootElement;
+    this._progress = rootElement.querySelector('.card__progress');
+    this._value = 0;
+    this._animated = false;
+    this._hidden = false;
+    this._bindControls();
+  }
 
-input.addEventListener('input', (e) => {
-  const val = Math.max(0, Math.min(100, Number(e.target.value)));
-  e.target.value = val;
-  progress.style.setProperty('--progress', `${val * 3.6}deg`);
-});
+  setValue(val) {
+    const clamped = Math.max(0, Math.min(100, Number(val)));
+    this._value = clamped;
+    this._progress.style.setProperty('--progress', `${clamped * 3.6}deg`);
 
-const animateCheckbox = document.getElementById('animate-checkbox');
+    const input = this._root.querySelector('#value-input');
+    if (input) {
+      input.value = clamped;
+    }
+  }
 
-animateCheckbox.addEventListener('change', (e) => {
-  progress.classList.toggle('card__progress--animated', e.target.checked);
-});
+  setAnimated(bool) {
+    this._animated = bool;
+    this._progress.classList.toggle('card__progress--animated', this._animated);
 
-const hideCheckbox = document.getElementById('hide-checkbox');
+    const checkbox = this._root.querySelector('#animate-checkbox');
+    if (checkbox) {
+      checkbox.checked = bool;
+    }
+  }
 
-hideCheckbox.addEventListener('change', (e) => {
-  progress.classList.toggle('card__progress--hidden', e.target.checked);
-});
+  setHidden(bool) {
+    this._hidden = !!bool;
+    this._progress.classList.toggle('card__progress--hidden', this._hidden);
+    const checkbox = this._root.querySelector('#hide-checkbox');
+
+    if (checkbox) {
+      checkbox.checked = this._hidden;
+    }
+  }
+
+  getState() {
+    return {
+      value: this._value,
+      animated: this._animated,
+      hidden: this._hidden,
+    };
+  }
+
+  _bindControls() {
+    this._root.querySelector('#value-input')?.addEventListener('input', (e) => {
+      this.setValue(e.target.value);
+    });
+
+    this._root.querySelector('#animate-checkbox')?.addEventListener('change', (e) => {
+      this.setAnimated(e.target.checked);
+    });
+
+    this._root.querySelector('#hide-checkbox')?.addEventListener('change', (e) => {
+      this.setHidden(e.target.checked);
+    });
+  }
+}
+
+const card = new ProgressCard(document.querySelector('.card'));
+card.setValue(75);
