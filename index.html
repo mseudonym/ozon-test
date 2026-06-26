@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="/reset.css">
+    <script src="main.js" defer></script>
   </head>
   <body>
     <article class='card'>
@@ -17,7 +18,12 @@
 
         <div class="card__controls">
           <div class="card__control">
-            <span class="control__value">60</span>
+            <input
+              type="number"
+              class="control__value"
+              id="value-input"
+              min="0" max="100" value="75"
+            />
             <span class="control__label">Value</span>
           </div>
 
